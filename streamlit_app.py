@@ -53,7 +53,7 @@ def check_password():
        
         if st.session_state["username"] != "" and st.session_state["password"] != "":            
         
-            df = cursor.execute(f"SELECT * FROM tmp WHERE CEDULA='{st.session_state["username"].upper()}' AND FICHA='{st.session_state["password"]}';").df()
+            df = cursor.execute(f"SELECT * FROM tmp WHERE CEDULA='{st.session_state['username'].upper()}' AND FICHA='{st.session_state['password']}';").df()
 
             if len(df) > 0:                
                 st.session_state["username"] = str(df['NOMBRE'].iloc[0])
