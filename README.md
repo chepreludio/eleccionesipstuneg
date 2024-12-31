@@ -1,10 +1,10 @@
 # 🎈 Blank app template
 
-A simple Streamlit app template for you to modify!
+App para realizar las elecciones del Ipstuneg 2025!
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
 
-### How to run it on your own machine
+### Como ejecutarlo...
 
 1. Install the requirements
 

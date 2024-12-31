@@ -34,7 +34,7 @@ def getData():
     return varEnviado
 
 def votar():
-    st.success(f"Puede iniciar su proceso de elección {st.session_state["username"]}")
+    st.success(f'Puede iniciar su proceso de elección {st.session_state["username"]}')
     
 
 
