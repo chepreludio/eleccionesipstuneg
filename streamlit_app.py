@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import duckdb
 #from datetime import datetime
+from streamlit import runtime
+from streamlit.runtime.scriptrunner import get_script_run_ctx
 
 varTitulo = 'Elecciones Ipstuneg 2025'
 varCedula = ''
@@ -12,7 +14,10 @@ cursor.execute("""CREATE TABLE tmp AS SELECT * FROM read_csv('db/db.csv');""")
 
 st.set_page_config(
     layout="wide",
-    page_title=varTitulo,    
+    page_title=varTitulo,
+    page_icon=":white_check_mark:",
+    initial_sidebar_state="collapsed",
+    menu_items=None
 )
 
 #@st.cache_data
@@ -23,6 +28,18 @@ st.set_page_config(
 #    st.session_state["authenticated"] = False
 #    st.session_state["username"] = ''
 #    return cursor
+def get_remote_ip() -> str:
+    try:
+        ctx = get_script_run_ctx()
+        if ctx is None:
+            return None
+        session_info = runtime.get_instance().get_client(ctx.session_id)
+        if session_info is None:
+            return None
+    except Exception as e:
+        return None
+    
+    return session_info.request.remote_ip
 
 def getData():
     with st.form(varTitulo):
@@ -82,6 +99,7 @@ def check_password():
 
 def main():
     st.title(varTitulo)
+    st.write(get_remote_ip())
 
     if not check_password():
         st.stop()
